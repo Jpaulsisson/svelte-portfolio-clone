@@ -5,6 +5,7 @@
   import GitHub from '../resources/github.svg';
 
   import Modal from "./modal.svelte";
+
   let showModal = false
   const toggleModal = () => {
     showModal = !showModal
@@ -18,7 +19,7 @@
     <Modal
     open={showModal}
     on:close={toggleModal}
-    />
+    ></Modal>
     <!-- end modal -->
     <button class=' cursor-pointer' on:click={toggleModal}>
       <img class='w-10 md:w-16' src={Email} alt='envelope'/>

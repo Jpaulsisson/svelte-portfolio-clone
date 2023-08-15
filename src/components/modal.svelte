@@ -3,10 +3,10 @@
 {#if open}
 <!-- Modal maker -->
 <div class="modal z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center opacity-95 p-8 lg:p-0">
-  <div  class="modal-overlay fixed w-full h-full bg-gray-900 opacity-80"></div>
+  <div class="modal-overlay fixed w-full h-full bg-gray-900 opacity-80"></div>
 <!-- end Modal maker/begin actual modal -->
   <div class="bg-primaryBg border-accentRed border-4 w-full md:h-max md:w-9/12  mx-auto rounded-lg shadow-xl z-50 overflow-y-auto">
-    <div use:clickOutside  class="head bg-primaryBg py-5 px-8 text-2xl flex items-center justify-center">
+    <div class="head bg-primaryBg py-5 px-8 text-2xl flex items-center justify-center">
       <!-- close button -->
       <button class="w-9/12 p-2 bg-primaryBg hover:bg-accentGreen hover:text-primaryBg rounded-full text-primaryFont font-thin " on:click={() => dispatch('close')}>
       <span class="text-accentOrange">&#60;/</span>close<span class="text-accentOrange">&#62;</span>

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script defer lang="ts">
   import Footer from "../../components/footer.svelte";
   import Retrofolio from '../../resources/retrofolio.png';
   import CirclePainter from '../../resources/circle-painter.png';
@@ -19,11 +19,12 @@
   img: string,
   tags: string[],
   repo: string,
-  status?: string
+  status?: boolean
 }
 
 let openRecent = 'scale-0';
 let openCurrent = 'scale-0';
+let currentIndex = 0;
 
 const projects:Project[] = [
     {
@@ -31,7 +32,8 @@ const projects:Project[] = [
       href: 'https://jpaulsisson.netlify.app/',
       img: Retrofolio,
       tags: [HTMLIcon, SassIcon, JSIcon, ReactIcon, GitIcon],
-      repo: 'https://github.com/Jpaulsisson/portfolio-site'
+      repo: 'https://github.com/Jpaulsisson/portfolio-site',
+      status: true,
     },
     {
       name: 'Circle Painter',
@@ -39,6 +41,7 @@ const projects:Project[] = [
       img: CirclePainter,
       tags: [HTMLIcon, CSSIcon, JSIcon, ReactIcon, GitIcon],
       repo: 'https://github.com/Jpaulsisson/circle-generator-app',
+      status: false,
     },
     {
       name: 'Blackjack',
@@ -46,6 +49,7 @@ const projects:Project[] = [
       img: Blackjack,
       tags: [HTMLIcon, CSSIcon, JSIcon, ReactIcon, GitIcon],
       repo: 'https://github.com/Jpaulsisson/blackjack',
+      status: false,
     },
     {
       name: 'Age Calculator',
@@ -53,6 +57,7 @@ const projects:Project[] = [
       img: AgeCalc,
       tags: [HTMLIcon, SassIcon, JSIcon, GitIcon],
       repo: 'https://github.com/Jpaulsisson/age-calculator-app',
+      status: false,
     },
     {
       name: 'Customizable Counter',
@@ -60,6 +65,7 @@ const projects:Project[] = [
       img: Counter,
       tags: [HTMLIcon, CSSIcon, JSIcon, ReactIcon, GitIcon],
       repo: 'https://github.com/Jpaulsisson/wds-react-hooks-course/tree/main',
+      status: false,
     },
   ]
 
@@ -69,7 +75,6 @@ const current:Project = {
   img: Travel,
   tags: [HTMLIcon, SassIcon, JSIcon, ReactIcon, GitIcon],
   repo: '#',
-  status: 'Gathering API keys and wireframing'
 };
 
 function handleToggleRecent() {
@@ -77,6 +82,12 @@ function handleToggleRecent() {
 }
 function handleToggleCurrent() {
   openCurrent === 'scale-100' ? openCurrent = 'scale-0' : openCurrent = 'scale-100';
+}
+function handlePrev() {
+  currentIndex === 0 ? currentIndex = projects.length - 1 : currentIndex -= 1;
+}
+function handleNext() {
+  currentIndex === projects.length - 1 ? currentIndex = 0 : currentIndex += 1;
 }
 </script>
 
@@ -102,50 +113,63 @@ function handleToggleCurrent() {
   <!-- recent projects -->
 
   <h2 class='mb-10 text-center text-3xl md:text-5xl'>recent</h2>
-  <div class='w-4/5 rounded-md relative transition-all flex gap-2 overflow-x-scroll'>
-    
-    {#each projects as {name, href, img, tags, repo}}
-    <div class='w-full relative'>
-      <div>
-        <img src={img} alt={name} class="w-full p-2" />
+  <section aria-label="my recent projects" class=''>
+    <div class="carousel-container ">
+      <button on:click={handlePrev} class="carousel-button prev absolute top-1/2 left-2 text-primaryBg text-2xl md:text-4xl bg-primaryFont opacity-40  rounded-full p-1 md:p-2 flex items-center justify-center hover:opacity-100 z-10">&#8678;</button>
+      <button on:click={handleNext} class="carousel-button next absolute top-1/2 right-2 text-primaryBg text-2xl md:text-4xl bg-primaryFont opacity-40  rounded-full p-1 md:p-2 flex items-center justify-center hover:opacity-100 z-10">&#8680;</button>
+      <ul class=" list-none">
+        {#each projects as {name, href, img, tags, repo}, index}
+          <li class={`car-slide ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`} >
+            <a href={href} aria-label={name + ' live site'} rel="noopener noreferrer" target="_blank" class="absolute z-40 bg-transparent w-8/12 h-3/4 inset-0 m-auto"> </a>
+            <img src={img} alt={name} class="rounded-md">
 
-        <!-- more info content -->
-        <div class={`more-info w-full inset-0 absolute ${openRecent} overflow-hidden bg-primaryBg opacity-90 flex flex-col items-center justify-center transition-all`}>
-          <h3 class='flex items-center justify-center text-accentGreen text-xl md:text-3xl'>{name}</h3>
-          <p class='text-xl md:text-2xl' >Tech stack:</p>
-          <div class='flex items-center justify-evenly'>
-            {#each tags as tag}
-              <img src={tag} alt={name} />
-            {/each}
-          </div>
-          <a class='flex justify-center items-center text-xl md:text-2xl' href='/contact'><span class='text-accentGreen text-2xl' >&#60;</span>github repo<span class='text-accentGreen text-2xl'>&#62;</span>
-          </a>
-        </div>
+            <!-- more info content -->
+
+            <div class={`more-info w-full inset-0 absolute ${openRecent} bg-primaryBg opacity-95 flex flex-col items-center justify-center`}>
+              <h3 class='flex items-center justify-center text-accentGreen text-xl md:text-3xl'>{name}</h3>
+              <p class='text-xl md:text-2xl' >Tech stack:</p>
+              <div class='flex items-center justify-around gap-2 md:gap-6'>
+                {#each tags as tag}
+                  <img src={tag} alt={name} class=' w-10 md:w-[10%]'/>
+                {/each}
+              </div>
+              <a class='flex justify-center items-center text-xl md:text-2xl' target="_blank" rel="noopener noreferrer" href={repo}><span class='text-accentGreen text-2xl' >&#60;</span>github repo<span class='text-accentGreen text-2xl'>&#62;</span>
+              </a>
+            </div>
+
         <!-- end of more info content -->
-      </div>
-  </div>
-    {/each}
-  </div>
+
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </section>
   <button on:click={handleToggleRecent} class='mb-20 mt-4 rounded-md text-primaryFont w-1/4 border-[1px] border-accentGreen md:text-2xl'>More info</button>
 
+<!-- end of recent projects -->
 <!-- current project -->
 
   <h2 class='mb-10 text-center text-3xl md:text-5xl'>current</h2>
   <div class='w-4/5 relative'>
       <div>
-        <img src={Travel} alt='van traveling road' class="w-full" />
-        <div class={`more-info w-full inset-0 absolute ${openCurrent} overflow-hidden bg-primaryBg opacity-90 flex flex-col items-center justify-center transition-all`}>
+        <img src={Travel} alt='van traveling road' class="w-full rounded-md" />
+
+        <!-- begin more info content -->
+
+        <div class={`more-info w-full inset-0 absolute ${openCurrent} bg-primaryBg opacity-95 flex flex-col items-center justify-center`}>
           <h3 class='flex items-center justify-center text-accentGreen text-xl md:text-3xl'>Travel Planner</h3>
           <p class='text-xl md:text-2xl' >Tech stack:</p>
-          <div class='flex items-center justify-evenly'>
+          <div class='flex items-center justify-around gap-2 md:gap-6'>
             {#each current.tags as tag}
-              <img src={tag} alt={current.name} />
+              <img src={tag} alt={current.name} class=' w-10 md:w-[10%]' />
             {/each}
           </div>
           <a class='flex justify-center items-center text-xl md:text-2xl' href='/contact'><span class='text-accentGreen text-2xl' >&#60;</span>collaborate<span class='text-accentGreen text-2xl'>&#62;</span>
           </a>
         </div>
         
+      <!-- end more info content -->
+
       </div>
   </div>
   <button on:click={handleToggleCurrent} class='mb-20 mt-4 rounded-md text-primaryFont w-1/4 border-[1px] border-accentGreen md:text-2xl'>More info</button>
@@ -159,3 +183,32 @@ function handleToggleCurrent() {
   <Footer />
 
 </main>
+
+
+<style>
+  .more-info {
+    transition: all 400ms;
+  }
+
+  .carousel-button {
+    transform: translateY(-50%);
+  }
+
+  .carousel-button:focus {
+    opacity: 1;
+    outline: 3px solid var(--accentGreen);
+  }
+
+  .carousel-container {
+    width: clamp(320px, 80vw, 750px);
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+
+  .car-slide {
+    position: absolute;
+    inset: 0;
+    transition: opacity 500ms;
+  }
+
+</style>
