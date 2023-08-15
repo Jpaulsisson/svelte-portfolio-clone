@@ -2,11 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primaryFont: hsl(34, 58%, 78%);
+  --primaryBg: hsl(202, 63%, 18%);
+  --accentOrange: hsl(32, 67%, 40%);
+  --accentGreen: hsl(134, 35%, 57%);
+  --accentGold: hsl(43, 65%, 66%);
+  --accentRed: hsl(358, 43%, 66%);
+}
+
 *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
   font-family: 'Heebo', sans-serif;
+  font-weight: 100;
+  color: var(--primaryFont);
 }
+
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  max-width: 850px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+::-webkit-scrollbar {
+  height: 2px;
+  width: 1px;
+  background-color: var(--primaryBg);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 1px;
+  background-color: var(--accentRed);
+}
+
