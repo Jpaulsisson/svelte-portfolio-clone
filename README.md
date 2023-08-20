@@ -23,7 +23,7 @@
   1. Svelte is a good bit different when you've only used React
   2. Building that carousel
   3. Creating a modal from scratch
-  4. Handling all the `A11y` errors/warnings to maximize accessability
+  4. Handling all the `A11y` errors/warnings to maximize accessibility
   5. Getting the nav links to color switch properly using the `$page` object
 
 ---
@@ -44,3 +44,4 @@
   - I'm crazy proud of that carousel on the `/works` page
   - Catching on to a new framework so easily and quickly made me feel like maybe I understand this coding stuff more than I give myself credit for
   - The color scheme is good on the original and the clone while remaining unique to themselves
+  - It's fully responsive, which *used* to be a struggle for me.
