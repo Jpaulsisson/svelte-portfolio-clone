@@ -114,9 +114,9 @@ function handleNext() {
 
   <h2 class='mb-10 text-center text-3xl md:text-5xl'>recent</h2>
   <section aria-label="my recent projects" class=''>
-    <div class="carousel-container ">
-      <button on:click={handlePrev} class="carousel-button prev absolute top-1/2 left-2 text-primaryBg text-2xl md:text-4xl bg-primaryFont opacity-40  rounded-full p-1 md:p-2 flex items-center justify-center hover:opacity-100 z-10">&#8678;</button>
-      <button on:click={handleNext} class="carousel-button next absolute top-1/2 right-2 text-primaryBg text-2xl md:text-4xl bg-primaryFont opacity-40  rounded-full p-1 md:p-2 flex items-center justify-center hover:opacity-100 z-10">&#8680;</button>
+    <div class="carousel-container relative">
+      <button on:click={handlePrev} class="carousel-button prev absolute top-1/2 left-2 text-primaryBg font-semibold text-2xl md:text-4xl bg-primaryFont opacity-40 aspect-square rounded-full p-1 md:p- flex items-center justify-center hover:opacity-100 z-10">&lt;</button>
+      <button on:click={handleNext} class="carousel-button next absolute top-1/2 right-2 text-primaryBg font-semibold text-2xl md:text-4xl bg-primaryFont opacity-40 aspect-square rounded-full p-1 md:p-2 flex items-center justify-center hover:opacity-100 z-10">&gt;</button>
       <ul class=" list-none">
         {#each projects as {name, href, img, tags, repo}, index}
           <li class={`car-slide ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`} >
@@ -192,6 +192,7 @@ function handleNext() {
 
   .carousel-button {
     transform: translateY(-50%);
+    width: 8%;
   }
 
   .carousel-button:focus {
@@ -202,7 +203,6 @@ function handleNext() {
   .carousel-container {
     width: clamp(320px, 80vw, 750px);
     aspect-ratio: 16/9;
-    position: relative;
   }
 
   .car-slide {
