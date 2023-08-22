@@ -22,6 +22,11 @@
   status?: boolean
 }
 
+  type Skill = {
+    name: string,
+    color: string,
+  }
+
 let openRecent = 'scale-0';
 let openCurrent = 'scale-0';
 let currentIndex = 0;
@@ -97,7 +102,7 @@ function handleNext() {
 
   <section class='my-10'>
     <h2 class='text-3xl text-center my-4 md:text-5xl'>proficiencies</h2>
-    <ul class=' grid grid-cols-3 text-xl md:text-2xl'>
+    <ul class=' grid grid-cols-2 gap-x-12 text-xl md:text-2xl'>
       <li class='p-3 text-accentOrange'>HTML</li>
       <li class='p-3 text-blue-500'>CSS</li>
       <li class='p-3 text-yellow-300'>Javascript</li>
@@ -107,6 +112,7 @@ function handleNext() {
       <li class='p-3 text-accentGreen'>Tailwind</li>
       <li class='p-3 text-accentOrange'>Git</li>
       <li class='p-3 text-purple-600 '>Bootstrap</li>
+      <li class='p-3 text-red-700'>Svelte</li>
     </ul>
   </section>
 
