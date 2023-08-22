@@ -31,6 +31,48 @@ let openRecent = 'scale-0';
 let openCurrent = 'scale-0';
 let currentIndex = 0;
 
+const skills:Skill[] = [
+  {
+    name: 'HTML',
+    color: 'text-accentOrange',
+  },
+  {
+    name: 'CSS',
+    color: 'text-blue-500',
+  },
+  {
+    name: 'JavaScript',
+    color: 'text-yellow-300',
+  },
+  {
+    name: 'React',
+    color: 'text-blue-300',
+  },
+  {
+    name: 'Sass',
+    color: 'text-pink-500',
+  },
+  {
+    name: 'TypeScript',
+    color: 'text-blue-500',
+  },
+  {
+    name: 'Tailwind',
+    color: 'text-accentGreen',
+  },
+  {
+    name: 'Git',
+    color: 'text-accentOrange',
+  },
+  {
+    name: 'Bootstrap',
+    color: 'text-purple-600',
+  },
+  {
+    name: 'Svelte',
+    color: 'text-red-700',
+  },
+]
 const projects:Project[] = [
     {
       name: 'Retrofolio',
@@ -102,17 +144,10 @@ function handleNext() {
 
   <section class='my-10'>
     <h2 class='text-3xl text-center my-4 md:text-5xl'>proficiencies</h2>
-    <ul class=' grid grid-cols-2 gap-x-12 text-xl md:text-2xl'>
-      <li class='p-3 text-accentOrange'>HTML</li>
-      <li class='p-3 text-blue-500'>CSS</li>
-      <li class='p-3 text-yellow-300'>Javascript</li>
-      <li class='p-3 text-blue-300'>React</li>
-      <li class='p-3 text-pink-500'>Sass</li>
-      <li class='p-3 text-blue-500 '>Typescript</li>
-      <li class='p-3 text-accentGreen'>Tailwind</li>
-      <li class='p-3 text-accentOrange'>Git</li>
-      <li class='p-3 text-purple-600 '>Bootstrap</li>
-      <li class='p-3 text-red-700'>Svelte</li>
+    <ul class=' grid grid-cols-2 gap-x-12 tracking-wide text-xl md:text-2xl'>
+      {#each skills as {name, color}}
+        <li class={`p-3 ${color}`}>{name}</li>
+      {/each}
     </ul>
   </section>
 
