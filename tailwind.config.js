@@ -10,6 +10,9 @@ export default {
         'accentGreen': 'var(--accentGreen)',
         'accentGold': 'var(--accentGold)',
         'accentRed': 'var(--accentRed)',
+      },
+      maxWidth: {
+        'cutoff': '850px',
       }
     },
   },

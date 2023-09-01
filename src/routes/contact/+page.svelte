@@ -17,16 +17,16 @@
 
   <section class=' flex flex-col gap-8 mt-2 md:mt-6 md:gap-12'>
     <button class='' on:click={handleToggleModal} >
-      <img class='w-24 md:w-40 ' src={Email} alt='envelope' />
+      <img class='w-24 md:w-36' src={Email} alt='envelope' />
     </button>
     <button class='' on:click={handleToggleModal}>
-      <img class='w-24 md:w-40 ' src={Phone} alt='phone' />
+      <img class='w-24 md:w-36' src={Phone} alt='phone' />
     </button>
     <a class='' href='https://www.linkedin.com/in/jpaulsisson/' rel='noopener noreferrer' target='_blank'>
-      <img class='w-24 md:w-40 ' src={LinkedIn} alt='LinkedIn logo' />
+      <img class='w-24 md:w-36' src={LinkedIn} alt='LinkedIn logo' />
     </a>
     <a href="https://github.com/Jpaulsisson" rel='noopener noreferrer' target='_blank'>
-      <img class='w-24 md:w-40 ' src={GitHub} alt='GitHub logo' />
+      <img class='w-24 md:w-36' src={GitHub} alt='GitHub logo' />
     </a>
     <Modal
     open={showModal}

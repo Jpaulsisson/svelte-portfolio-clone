@@ -14,12 +14,12 @@
   import Travel from '../../resources/travel.jpeg';
   
   type Project = {
-  name: string,
-  href: string,
-  img: string,
-  tags: string[],
-  repo: string,
-  status?: boolean
+    name: string,
+    href: string,
+    img: string,
+    tags: string[],
+    repo: string,
+    status?: boolean
 }
 
   type Skill = {
@@ -162,7 +162,7 @@ function handleNext() {
         {#each projects as {name, href, img, tags, repo}, index}
           <li class={`car-slide ${currentIndex === index ? 'opacity-100' : 'opacity-0'}`} >
             <a href={href} aria-label={name + ' live site'} rel="noopener noreferrer" target="_blank" class="absolute z-40 bg-transparent w-8/12 h-3/4 inset-0 m-auto"> </a>
-            <img src={img} alt={name} class="rounded-md">
+            <img src={img} alt={name} class="rounded-md"/>
 
             <!-- more info content -->
 
