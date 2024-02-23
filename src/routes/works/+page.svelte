@@ -45,16 +45,48 @@ const skills:Skill[] = [
     color: 'text-yellow-300',
   },
   {
+    name: 'TypeScript',
+    color: 'text-blue-500',
+  },
+  {
+    name: 'Python',
+    color: 'text-sky-700',
+  },
+  {
     name: 'React',
     color: 'text-blue-300',
+  },
+  {
+    name: 'SQL',
+    color: 'text-amber-200',
+  },
+  {
+    name: 'PostgreSQL',
+    color: 'text-sky-600',
+  },
+  {
+    name: 'Supabase',
+    color: 'text-emerald-400'
+  },
+  {
+    name: 'React Native',
+    color: 'text-sky-300',
+  },
+  {
+    name: 'Next',
+    color: 'text-slate-300',
   },
   {
     name: 'Sass',
     color: 'text-pink-500',
   },
   {
-    name: 'TypeScript',
-    color: 'text-blue-500',
+    name: 'NodeJS',
+    color: 'text-lime-600',
+  },
+  {
+    name: 'ExpressJS',
+    color: 'text-slate-300',
   },
   {
     name: 'Tailwind',
